@@ -10,6 +10,7 @@ import {
 } from "@remix-run/react";
 import Navbar from "./components/navbar";
 import { ToastContainer } from "react-toastify";
+import { Analytics } from "@vercel/analytics/react";
 
 import stylesheet from "~/tailwind.css";
 import toastifyStyles from "react-toastify/dist/ReactToastify.min.css";
@@ -39,6 +40,7 @@ export default function App() {
         </div>
         <ScrollRestoration />
         <Footer />
+        <Analytics />
         <Scripts />
         <LiveReload />
       </body>
