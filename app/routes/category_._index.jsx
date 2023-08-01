@@ -48,14 +48,14 @@ export default function CategoriesPage() {
       <section className="mt-4">
         <ul className="flex flex-wrap gap-4">
           {categories.map((category) => (
-            <li key={category.id}>
+            <li key={category}>
               <Switch
                 as={Fragment}
                 onChange={(checked) =>
                   setActiveCategories(
                     checked
-                      ? [...activeCategories, category.subject]
-                      : activeCategories.filter((c) => c !== category.subject)
+                      ? [...activeCategories, category]
+                      : activeCategories.filter((c) => c !== category)
                   )
                 }
               >
@@ -68,8 +68,8 @@ export default function CategoriesPage() {
                       { "text-gray-800 bg-white hover:bg-gray-50": !checked },
                     ])}
                   >
-                    <span className="sr-only">Select {category.subject}</span>
-                    <span>{category.subject}</span>
+                    <span className="sr-only">Select {category}</span>
+                    <span>{category}</span>
                   </button>
                 )}
               </Switch>

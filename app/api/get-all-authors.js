@@ -1,13 +1,5 @@
-import prisma from "../db.server";
+import quotes from "../data/quotes.json";
 
 export const getAllAuthors = async () => {
-  const authors = await prisma.quotes.findMany({
-    select: { id: true, spokesperson: true },
-    distinct: "spokesperson",
-    orderBy: {
-      spokesperson: "asc",
-    },
-  });
-
-  return authors;
+  return [...new Set(quotes.map((quote) => quote.spokesperson))];
 };

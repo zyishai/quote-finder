@@ -1,13 +1,5 @@
-import prisma from "../db.server";
+import quotes from "../data/quotes.json";
 
 export const getAllCategories = async () => {
-  const categories = await prisma.quotes.findMany({
-    select: { id: true, subject: true },
-    distinct: "subject",
-    orderBy: {
-      subject: "asc",
-    },
-  });
-
-  return categories;
+  return [...new Set(quotes.map((quote) => quote.subject))];
 };

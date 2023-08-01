@@ -2,7 +2,7 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "build": "remix build && prisma generate && prisma db push && prisma db seed",
+    "build": "remix build",
     "dev": "remix dev",
     "start": "remix-serve build",
     "typecheck": "tsc"
@@ -29,14 +29,10 @@
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
     "eslint": "^8.38.0",
-    "prisma": "^5.0.0",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.0.4"
   },
   "engines": {
     "node": ">=14.0.0"
-  },
-  "prisma": {
-    "seed": "node prisma/seed.js"
   }
 }

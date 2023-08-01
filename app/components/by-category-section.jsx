@@ -18,9 +18,9 @@ export default function QuotesByCategory({ categories }) {
       <Carousel className="mt-3">
         {categories.map((category) => (
           <CategoryCard
-            key={category.id}
-            imageUrl={`/covers/${category.subject.toLowerCase()}.jpeg`}
-            text={category.subject.replace("-", " ")}
+            key={category}
+            imageUrl={`/covers/${category.toLowerCase()}.jpeg`}
+            text={category.replace("-", " ")}
           />
         ))}
       </Carousel>

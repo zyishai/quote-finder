@@ -1,13 +1,5 @@
-import prisma from "../db.server";
+import quotes from "../data/quotes.json";
 
 export const fetchQuotesByAuthor = async (...authorNames) => {
-  const quotes = await prisma.quotes.findMany({
-    where: {
-      spokesperson: {
-        in: authorNames,
-      },
-    },
-  });
-
-  return quotes;
+  return quotes.filter((quote) => authorNames.includes(quote.spokesperson));
 };

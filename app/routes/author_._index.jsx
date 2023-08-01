@@ -48,14 +48,14 @@ export default function CategoriesPage() {
       <section className="mt-4">
         <ul className="flex flex-wrap gap-4">
           {authors.map((author) => (
-            <li key={author.id}>
+            <li key={author}>
               <Switch
                 as={Fragment}
                 onChange={(checked) =>
                   setSelectedAuthors(
                     checked
-                      ? [...selectedAuthors, author.spokesperson]
-                      : selectedAuthors.filter((a) => a !== author.spokesperson)
+                      ? [...selectedAuthors, author]
+                      : selectedAuthors.filter((a) => a !== author)
                   )
                 }
               >
@@ -68,10 +68,8 @@ export default function CategoriesPage() {
                       { "text-gray-800 bg-white hover:bg-gray-50": !checked },
                     ])}
                   >
-                    <span className="sr-only">
-                      Select {author.spokesperson}
-                    </span>
-                    <span>{author.spokesperson}</span>
+                    <span className="sr-only">Select {author}</span>
+                    <span>{author}</span>
                   </button>
                 )}
               </Switch>

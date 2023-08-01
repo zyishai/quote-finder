@@ -18,9 +18,9 @@ export default function QuotesByAuthor({ authors }) {
       <Carousel className="mt-3">
         {authors.map((author) => (
           <AuthorCard
-            key={author.id}
-            imageUrl={`/spokesman/${author.spokesperson.toLowerCase()}.jpeg`}
-            text={author.spokesperson.replace("-", " ")}
+            key={author}
+            imageUrl={`/spokesman/${author.toLowerCase()}.jpeg`}
+            text={author.replace("-", " ")}
           />
         ))}
       </Carousel>

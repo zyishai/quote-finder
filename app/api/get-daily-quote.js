@@ -1,7 +1,7 @@
-import prisma from "../db.server";
+import quotes from "../data/quotes.json";
+import { getJulianDate } from "../utils/date";
 
 export const getDailyQuote = async () => {
-  const [dailyQuote] =
-    await prisma.$queryRaw`select * from quotes limit 1 offset (select julianday()%20 from quotes);`;
-  return dailyQuote;
+  const dailyIndex = Math.floor(getJulianDate(new Date()) % quotes.length);
+  return quotes[dailyIndex];
 };

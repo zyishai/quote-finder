@@ -1,32 +1,11 @@
-import prisma from "../db.server";
+import quotes from "../data/quotes.json";
 
 export const queryQuotes = async (searchTerm) => {
-  const quotes = await prisma.quotes.findMany({
-    where: {
-      OR: [
-        {
-          quote: {
-            contains: searchTerm,
-          },
-        },
-        {
-          subject: {
-            contains: searchTerm,
-          },
-        },
-        {
-          spokesperson: {
-            contains: searchTerm,
-          },
-        },
-        {
-          tags: {
-            contains: searchTerm,
-          },
-        },
-      ],
-    },
-  });
-
-  return quotes;
+  return quotes.filter(
+    (quote) =>
+      quote.quote.includes(searchTerm) ||
+      quote.spokesperson.includes(searchTerm) ||
+      quote.subject.includes(searchTerm) ||
+      quote.tags.includes(searchTerm)
+  );
 };

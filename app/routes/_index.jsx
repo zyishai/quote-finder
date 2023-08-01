@@ -2,8 +2,9 @@ import { json } from "@remix-run/node";
 import QuotesByAuthor from "../components/by-author-section";
 import QuotesByCategory from "../components/by-category-section";
 import DailyQuote from "../components/daily-quote";
-import prisma from "../db.server";
 import { useLoaderData } from "@remix-run/react";
+import { getAllAuthors } from "../api/get-all-authors";
+import { getAllCategories } from "../api/get-all-categories";
 import { getDailyQuote } from "../api/get-daily-quote";
 
 export const meta = () => {
@@ -14,18 +15,10 @@ export const meta = () => {
 };
 
 export const loader = async () => {
-  const categories = await prisma.quotes.findMany({
-    select: { id: true, subject: true },
-    distinct: "subject",
-  });
-  const authors = await prisma.quotes.findMany({
-    select: { id: true, spokesperson: true },
-    distinct: "spokesperson",
-    orderBy: {
-      spokesperson: "asc",
-    },
-  });
-  return json({ categories, authors, dailyQuote: await getDailyQuote() });
+  const categories = await getAllCategories();
+  const authors = await getAllAuthors();
+  const dailyQuote = await getDailyQuote();
+  return json({ categories, authors, dailyQuote });
 };
 
 export default function Index() {
