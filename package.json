@@ -2,7 +2,7 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "build": "prisma generate && prisma db push && prisma db seed && remix build",
+    "build": "remix build && prisma generate && prisma db push && prisma db seed",
     "dev": "remix dev",
     "start": "remix-serve build",
     "typecheck": "tsc"
